@@ -1,12 +1,15 @@
 package com.example.androidcomposeguideapp
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -59,10 +62,19 @@ private fun StepItem(
     var expanded by remember {
         mutableStateOf(false)
     }
+    val color by animateColorAsState(
+        targetValue = if (expanded) MaterialTheme.colorScheme.primaryContainer
+        else MaterialTheme.colorScheme.secondaryContainer,
+        label = "Colour Animation",
+    )
 
     Card(
         modifier = modifier
-            .padding(dimensionResource(id = R.dimen.padding_small))
+            .padding(
+                top = dimensionResource(id = R.dimen.padding_medium),
+                start = dimensionResource(id = R.dimen.padding_small),
+                end = dimensionResource(id = R.dimen.padding_small)
+            )
             .animateContentSize(
                 animationSpec = spring(
                     dampingRatio = Spring.DampingRatioNoBouncy,
@@ -72,15 +84,18 @@ private fun StepItem(
     ) {
         Column(
             modifier
-                .padding(dimensionResource(id = R.dimen.padding_medium))
                 .fillMaxWidth()
+                .background(color)
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))
+            ) {
                 Text(
                     text = stringResource(id = step.stepName),
-                    style = Typography.titleLarge,
-                    modifier = Modifier.weight(1f)
+                    style = Typography.titleLarge
                 )
+                Spacer(modifier = Modifier.weight(1f))
                 ExpandButton(
                     expanded = expanded,
                     onClick = {expanded = !expanded}
@@ -93,14 +108,14 @@ private fun StepItem(
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
                     modifier = Modifier
-                        .padding(vertical = dimensionResource(id = R.dimen.padding_small))
                         .height(200.dp)
                         .align(Alignment.CenterHorizontally)
                         .clip(Shapes.small)
                 )
                 Text(
                     text = stringResource(id = step.stepInfo),
-                    style = Typography.bodyLarge
+                    style = Typography.bodyLarge,
+                    modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))
                 )
             }
         }

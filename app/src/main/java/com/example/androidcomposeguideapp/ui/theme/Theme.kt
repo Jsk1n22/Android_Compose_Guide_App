@@ -265,7 +265,7 @@ fun AndroidComposeGuideAppTheme(
         }
 
         darkTheme -> darkScheme
-        else -> mediumContrastLightColorScheme
+        else -> lightScheme
     }
 
     MaterialTheme(
