@@ -79,10 +79,7 @@ private fun TopBar(
     )
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingDarkPreview() {
     AndroidComposeGuideAppTheme(darkTheme = true) {
@@ -90,10 +87,7 @@ fun GreetingDarkPreview() {
     }
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingLightPreview() {
     AndroidComposeGuideAppTheme(darkTheme = false) {
