@@ -1,5 +1,8 @@
 package com.example.androidcomposeguideapp
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -60,6 +63,12 @@ private fun StepItem(
     Card(
         modifier = modifier
             .padding(dimensionResource(id = R.dimen.padding_small))
+            .animateContentSize(
+                animationSpec = spring(
+                    dampingRatio = Spring.DampingRatioNoBouncy,
+                    stiffness = Spring.StiffnessMedium
+                )
+            )
     ) {
         Column(
             modifier
