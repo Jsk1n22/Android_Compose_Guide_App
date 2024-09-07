@@ -20,8 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AndroidComposeGuideAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    GuideApp(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -31,17 +30,20 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+private fun GuideApp(modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
+        text = "Hello!",
         modifier = modifier
     )
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
 @Composable
 fun GreetingPreview() {
     AndroidComposeGuideAppTheme {
-        Greeting("Android")
+        GuideApp()
     }
 }
