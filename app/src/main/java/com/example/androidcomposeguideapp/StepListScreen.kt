@@ -93,9 +93,9 @@ private fun StepItem(
             ) {
                 Text(
                     text = stringResource(id = step.stepName),
-                    style = Typography.titleLarge
+                    style = Typography.titleLarge,
+                    modifier = Modifier.weight(1f)
                 )
-                Spacer(modifier = Modifier.weight(1f))
                 ExpandButton(
                     expanded = expanded,
                     onClick = {expanded = !expanded}
@@ -108,7 +108,7 @@ private fun StepItem(
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
                     modifier = Modifier
-                        .height(200.dp)
+                        .padding(horizontal = dimensionResource(id = R.dimen.padding_medium))
                         .align(Alignment.CenterHorizontally)
                         .clip(Shapes.small)
                 )
@@ -144,5 +144,5 @@ fun ExpandButton(
 @Composable
 @Preview (showBackground = true, showSystemUi = false)
 private fun StepItemPreview() {
-    StepItem(StepRepository.steps[0])
+    StepItem(StepRepository.steps[3])
 }
